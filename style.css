@@ -148,7 +148,7 @@ body {
     display: inline-flex;
     align-items: center;
     transition: all 0.3s ease;
-    background: transparent;
+    background: white;
 }
 
 .btn-secondary:hover {
