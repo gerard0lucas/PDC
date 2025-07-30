@@ -58,6 +58,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const duration = 2000; // 2 seconds
         const increment = target / (duration / 16); // 60fps
         let current = 0;
+        
+        // Get the original text to determine the format
+        const originalText = element.textContent;
+        let format = 'number'; // default format
+        
+        if (originalText.includes('%')) {
+            format = 'percentage';
+        } else if (originalText.includes('$')) {
+            format = 'currency';
+        } else if (originalText.includes('Cr+') || originalText.includes('Cr')) {
+            format = 'crore';
+        } else if (originalText.includes('M')) {
+            format = 'million';
+        } else if (originalText.includes('K')) {
+            format = 'thousand';
+        }
 
         const timer = setInterval(() => {
             current += increment;
@@ -66,17 +82,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(timer);
             }
             
-            // Format number based on target value
-            if (target >= 1000000) {
-                element.textContent = (current / 1000000).toFixed(1) + 'M';
-            } else if (target >= 1000) {
-                element.textContent = (current / 1000).toFixed(0) + 'K';
-            } else if (element.textContent.includes('%')) {
-                element.textContent = Math.floor(current) + '%';
-            } else if (element.textContent.includes('$')) {
-                element.textContent = '$' + (current / 1000000000).toFixed(1) + 'B';
-            } else {
-                element.textContent = Math.floor(current);
+            // Format number based on detected format
+            switch (format) {
+                case 'percentage':
+                    element.textContent = Math.floor(current) + '%';
+                    break;
+                case 'currency':
+                    if (target >= 1000000000) {
+                        element.textContent = '$' + (current / 1000000000).toFixed(1) + 'B';
+                    } else if (target >= 1000000) {
+                        element.textContent = '$' + (current / 1000000).toFixed(1) + 'M';
+                    } else {
+                        element.textContent = '$' + Math.floor(current).toLocaleString();
+                    }
+                    break;
+                case 'crore':
+                    element.textContent = Math.floor(current / 10000000) + ' Cr+';
+                    break;
+                case 'million':
+                    element.textContent = (current / 1000000).toFixed(1) + 'M';
+                    break;
+                case 'thousand':
+                    element.textContent = (current / 1000).toFixed(0) + 'K';
+                    break;
+                default:
+                    if (target >= 1000000) {
+                        element.textContent = (current / 1000000).toFixed(1) + 'M';
+                    } else if (target >= 1000) {
+                        element.textContent = (current / 1000).toFixed(0) + 'K';
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }
             }
         }, 16);
     }
