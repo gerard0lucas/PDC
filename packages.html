@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages - Power Design and Constructions</title>
+    <meta name="description" content="Explore our construction packages with detailed material specifications and rates. Choose from our premium, standard, and economy construction packages with transparent pricing and quality materials.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#EA580C',
+                        secondary: '#1F2937',
+                        accent: '#E9262D',
+                        dark: '#111827',
+                        light: '#F9FAFB'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mobile-friendly table: stack rows into labeled blocks */
+        @media (max-width: 640px) {
+            .responsive-table { min-width: 0 !important; width: 100%; }
+            .responsive-table thead { display: none; }
+            .responsive-table tr { display: block; border-bottom: 1px solid #e5e7eb; margin-bottom: 0.75rem; }
+            .responsive-table td { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.5rem; text-align: left !important; padding-top: 0.75rem; padding-bottom: 0.75rem; }
+            .responsive-table td::before { content: attr(data-label); font-weight: 600; color: #374151; }
+            .responsive-table td:first-child { grid-template-columns: 1fr; background: #f9fafb; font-weight: 700; }
+            .responsive-table td:first-child::before { content: ""; }
+
+            /* Use nth-child to inject labels for price columns */
+            .responsive-table tr td:nth-child(2)::before { content: "₹1,800"; }
+            .responsive-table tr td:nth-child(3)::before { content: "₹1,950"; }
+            .responsive-table tr td:nth-child(4)::before { content: "₹2,150"; }
+        }
+    </style>
+</head>
+<body class="bg-light font-roboto">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="w-auto h-12" src="./images/Logo Website .png" alt="">
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105">Home</a>
+                        <a href="about.html" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105">About</a>
+                        <a href="services.html" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105">Services</a>
+                        <a href="packages.html" class="text-primary border-b-2 border-primary px-3 py-2 text-sm font-semibold">Packages</a>
+                        <a href="projects.html" class="text-gray-700 hover:text-primary px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105">Projects</a>
+                        <a href="contact.html" class="bg-primary text-white px-6 py-2 rounded-md text-sm font-medium hover:shadow-lg transition-all duration-300 hover:scale-105">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary focus:outline-none transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t shadow-lg">
+                <a href="index.html" class="text-gray-700 hover:text-primary block px-3 py-2 text-base font-medium">Home</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary block px-3 py-2 text-base font-medium">About</a>
+                <a href="services.html" class="text-gray-700 hover:text-primary block px-3 py-2 text-base font-medium">Services</a>
+                <a href="packages.html" class="text-primary block px-3 py-2 text-base font-semibold">Packages</a>
+                <a href="projects.html" class="text-gray-700 hover:text-primary block px-3 py-2 text-base font-medium">Projects</a>
+                <a href="contact.html" class="text-gray-700 hover:text-primary block px-3 py-2 text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-secondary py-20 overflow-hidden">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-white space-y-8">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-md px-6 py-3">
+                        <svg class="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-sm font-medium">Transparent Pricing</span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                        Construction 
+                        <span class="text-accent">Packages</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                        Choose from our carefully curated construction packages with detailed material specifications and competitive rates. Quality construction at transparent pricing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-secondary mb-6">Construction Material Packages</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We offer three comprehensive construction packages designed to meet different budget requirements while maintaining quality standards. All rates are per square foot.
+                </p>
+            </div>
+
+            <!-- Package Comparison Table -->
+            <div class="overflow-x-auto">
+                <div class="min-w-full bg-white rounded-lg shadow-xl border border-gray-200">
+                    <div class="overflow-hidden">
+                        <table class="responsive-table min-w-[1000px] w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50 sticky top-0 z-10">
+                                <tr>
+                                    <th class="px-3 md:px-6 py-3 md:py-4 text-left text-xs md:text-sm font-semibold text-gray-900 bg-primary text-white whitespace-normal break-words">
+                                        Name of Materials
+                                    </th>
+                                    <th class="px-3 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-semibold text-gray-900 bg-blue-100 border-l whitespace-normal break-words">
+                                        <div class="space-y-2">
+                                            <div class="text-sm md:text-lg font-bold text-blue-800">Rate per Sft</div>
+                                            <div class="text-xl md:text-2xl font-bold text-blue-900">₹1,800</div>
+                                            <div class="text-xs md:text-sm text-blue-700">Economy Package</div>
+                                        </div>
+                                    </th>
+                                    <th class="px-3 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-semibold text-gray-900 bg-green-100 border-l whitespace-normal break-words">
+                                        <div class="space-y-2">
+                                            <div class="text-sm md:text-lg font-bold text-green-800">Rate per Sft</div>
+                                            <div class="text-xl md:text-2xl font-bold text-green-900">₹1,950</div>
+                                            <div class="text-xs md:text-sm text-green-700">Standard Package</div>
+                                        </div>
+                                    </th>
+                                    <th class="px-3 md:px-6 py-3 md:py-4 text-center text-xs md:text-sm font-semibold text-gray-900 bg-purple-100 border-l whitespace-normal break-words">
+                                        <div class="space-y-2">
+                                            <div class="text-sm md:text-lg font-bold text-purple-800">Rate per Sft</div>
+                                            <div class="text-xl md:text-2xl font-bold text-purple-900">₹2,150</div>
+                                            <div class="text-xs md:text-sm text-purple-700">Premium Package</div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td data-label="Name of Materials" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Steel</td>
+                                    <td data-label="₹1,800" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">ARS, JSW, TMT (Kamdhenu)</td>
+                                    <td data-label="₹1,950" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">ARS, JSW, TMT (Kamdhenu)</td>
+                                    <td data-label="₹2,150" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">ARS, JSW, TMT (Kamdhenu)</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td data-label="Name of Materials" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Solid Block</td>
+                                    <td data-label="₹1,800" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">6&quot; and 4&quot; Solid Blocks</td>
+                                    <td data-label="₹1,950" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">6&quot; and 4&quot; Solid Blocks</td>
+                                    <td data-label="₹2,150" class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">6&quot; and 4&quot; Solid Blocks</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Sand</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">M Sand</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">M Sand</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">M Sand</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Aggregates</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">40mm & 20mm Jelly</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">40mm & 20mm Jelly</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">40mm & 20mm Jelly</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Cement</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">ACC / Birla / Zuari</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">ACC / Birla / Zuari</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">ACC / Birla / Zuari</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Doors & Windows</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Red Sal Wood Frame (5&quot;x3&quot;), Shutter 32mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Red Sal Wood Frame (5&quot;x3&quot;), Shutter 32mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Red Sal Wood Frame (5&quot;x3&quot;), Shutter 32mm</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Main Door</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Teak Wood Frame (6&quot;x4&quot;), Shutter 35mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Teak Wood Frame (6&quot;x4&quot;), Shutter 35mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Teak Wood Frame (6&quot;x4&quot;), Shutter 35mm</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Pooja Room Door</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Red Sal Wood Frame (5&quot;x3&quot;), Shutter 32mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Red Sal Wood Frame (5&quot;x3&quot;), Shutter 32mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Red Sal Wood Frame (5&quot;x3&quot;), Shutter 32mm</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Windows</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Aluminium 2 track with glass</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">UPVC 2 track with glass</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">UPVC 2 track with glass</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Bathroom Doors</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">PVC</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">PVC</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">PVC</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Grill</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">MS Grill (10mm Rod, Hexagonal / Square)</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">MS Grill (10mm Rod, Hexagonal / Square)</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">MS Grill (10mm Rod, Hexagonal / Square)</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Flooring</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Vitrified Tiles @ ₹55/Sft</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Vitrified Tiles @ ₹75/Sft</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Vitrified Tiles @ ₹95/Sft</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Staircase & Cladding</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Granite @ ₹65/Sft</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Granite @ ₹85/Sft</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Granite @ ₹105/Sft</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Kitchen Platform</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Black Granite @ ₹85/Sft</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Black Granite @ ₹105/Sft</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Black Granite @ ₹125/Sft</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Dadooing</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Kitchen 2' height, Toilet full height (Tiles @ ₹35/Sft)</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Tiles @ ₹45/Sft</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Tiles @ ₹55/Sft</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Painting – Interior</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Birla / Asian – 2 coats Tractor Emulsion</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Birla / Asian – 2 coats Tractor Emulsion</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Birla / Asian – 2 coats Premium Emulsion</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Painting – Exterior</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Apex / Ace – 2 coats</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Apex / Ace – 2 coats</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Apex / Ace – 2 coats</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Painting – Enamel</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Shutters, Pooja & Main Door Polish</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Shutters, Pooja & Main Door Polish</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Shutters, Pooja & Main Door Polish</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Putty</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">JK Wall Putty</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">JK Wall Putty</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">JK Wall Putty</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Kitchen Slab</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Black Granite</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Black Granite</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Black Granite</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Kitchen Sink</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">SS Sink 600mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">SS Sink 600mm</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">SS Sink 600mm</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Bathroom Fittings</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Metro / Ashirvad / Astral</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Metro / Ashirvad / Astral</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Metro / Ashirvad / Astral</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Bathroom Accessories</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Local</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Local</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Local</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Plumbing Pipes</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Ashirvad / Astral / Supreme</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Ashirvad / Astral / Supreme</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Ashirvad / Astral / Supreme</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Electrical Wire</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Fireproof Wires (Polycab / V-Guard)</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Fireproof Wires (Polycab / V-Guard)</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Fireproof Wires (Polycab / V-Guard)</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Switches & Boards</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Anchor / Roma</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Anchor / Roma</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Anchor / Roma</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Water Proofing</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Dr. Fixit</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Dr. Fixit</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Dr. Fixit</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Sump</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">5000Ltr</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">5000Ltr</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">5000Ltr</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Overhead Tank</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Sintex / Supreme</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Sintex / Supreme</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Sintex / Supreme</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Flooring Concrete</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">100mm PCC</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">100mm PCC</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">100mm PCC</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Compound Wall</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">4.5&quot; solid block</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">4.5&quot; solid block</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">4.5&quot; solid block</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm font-medium text-gray-900 whitespace-normal break-words">Chamber Cover</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Cement Cover</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Cement Cover</td>
+                                    <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-600 text-center border-l whitespace-normal break-words">Cement Cover</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package Features -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-blue-50 p-8 rounded-lg border border-blue-200">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Economy Package</h3>
+                        <p class="text-blue-700 text-lg font-bold mb-2">₹1,800 per sq ft</p>
+                        <p class="text-blue-600">Perfect for budget-conscious projects with quality materials and reliable construction standards.</p>
+                    </div>
+                </div>
+
+                <div class="bg-green-50 p-8 rounded-lg border border-green-200">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-900 mb-2">Standard Package</h3>
+                        <p class="text-green-700 text-lg font-bold mb-2">₹1,950 per sq ft</p>
+                        <p class="text-green-600">Balanced package offering premium materials and enhanced features at competitive pricing.</p>
+                    </div>
+                </div>
+
+                <div class="bg-purple-50 p-8 rounded-lg border border-purple-200">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-900 mb-2">Premium Package</h3>
+                        <p class="text-purple-700 text-lg font-bold mb-2">₹2,150 per sq ft</p>
+                        <p class="text-purple-600">Luxury package with premium materials, superior finishes, and exclusive design elements.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call to Action (from index.html) -->
+    <section class="py-20 bg-secondary text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-accent"></div>
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-20 h-20 border border-white/20 rounded-md animate-float"></div>
+            <div class="absolute top-32 right-20 w-16 h-16 border border-white/20 rounded-md animate-bounce-slow"></div>
+            <div class="absolute bottom-20 left-1/4 w-12 h-12 border border-white/20 rounded-md animate-pulse-slow"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">Ready to Build Your Vision?</h2>
+            <p class="text-xl md:text-2xl mb-10 text-orange-100 animate-fade-in-up" style="animation-delay: 0.2s;">From concept to completion, we're here to make your construction dreams a reality. Let's discuss your project and create something extraordinary together.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.4s;">
+                <a href="contact.html" class="inline-flex items-center border-2 border-white text-white font-semibold py-4 px-8 rounded-md text-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105">Start Your Project</a>
+                <a href="projects.html" class="inline-flex items-center border-2 border-white text-white font-semibold py-4 px-8 rounded-md text-lg hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (from index.html) -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                       <img class="w-auto h-16" src="./images/Logo Website .png" alt="">
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">Building excellence through innovative design and expert construction. Your vision, our expertise, exceptional results.</p>
+                   <div class="flex space-x-4">
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/profile.php?id=100092342203647" class="w-10 h-10 bg-gray-700 rounded-md flex items-center justify-center hover:bg-primary transition-colors">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.333v21.334C0 23.403.597 24 1.325 24H12.82V14.708H9.692V11h3.128V8.414c0-3.1 1.893-4.788 4.658-4.788 1.325 0 2.464.099 2.795.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763V11h3.59l-.467 3.708h-3.123V24h6.116C23.403 24 24 23.403 24 22.667V1.333C24 .597 23.403 0 22.675 0z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+<a href="https://www.instagram.com/power_design_and_constructions/" class="w-10 h-10 bg-gray-700 rounded-md flex items-center justify-center hover:bg-primary transition-colors">
+  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </svg>
+</a>
+
+
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/@PowerConstruction-u6k" class="w-10 h-10 bg-gray-700 rounded-md flex items-center justify-center hover:bg-primary transition-colors">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M23.498 6.186a2.902 2.902 0 0 0-2.046-2.048C19.692 3.5 12 3.5 12 3.5s-7.692 0-9.452.638A2.902 2.902 0 0 0 .502 6.186C0 7.948 0 12 0 12s0 4.052.502 5.814a2.902 2.902 0 0 0 2.046 2.048c1.76.638 9.452.638 9.452.638s7.692 0 9.452-.638a2.902 2.902 0 0 0 2.046-2.048C24 16.052 24 12 24 12s0-4.052-.502-5.814zM9.546 15.568V8.432L15.818 12l-6.272 3.568z"/>
+    </svg>
+  </a>
+</div>
+
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Make sure to include Font Awesome CDN in your <head> -->
+<!-- Example: -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div>
+  <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+  <ul class="space-y-2 text-gray-400">
+    
+    <li class="flex items-center">
+      <i class="fas fa-phone-alt mr-2 text-primary"></i>
+      <a href="tel:+918792671649" class="hover:underline">+91 8792671649</a>
+    </li>
+    <li class="flex items-center">
+      <i class="fas fa-envelope mr-2 text-primary"></i>
+                      <a href="mailto:info@powerdesignconstruction.in" class="hover:underline">info@powerdesignconstruction.in</a>
+    </li>
+    <li class="flex items-start">
+      <i class="fas fa-map-marker-alt mr-2 mt-1 text-primary"></i>
+      <span>105, Chandra Layout Main Rd, Govindaraja Nagar Ward, Widia Layout, Vijayanagar, Bengaluru, Karnataka 560040</span>
+    </li>
+  </ul>
+</div>
+
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Power Design and Constructions. All rights reserved. Building excellence, one project at a time. | Powered by SRK ZenithVision</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
