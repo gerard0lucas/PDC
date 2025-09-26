@@ -158,42 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Contact form handling (if on contact page)
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const projectType = formData.get('project-type');
-            const message = formData.get('message');
-
-            if (!name || !email || !message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.classList.add('loading');
-
-            setTimeout(() => {
-                showNotification(`Thank you, ${name}! Your message has been received. We'll contact you at ${email} within 24 hours.`, 'success');
-                contactForm.reset();
-                submitButton.textContent = originalText;
-                submitButton.classList.remove('loading');
-            }, 2000);
-        });
-    }
 
     // Smooth scrolling for internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -361,6 +325,120 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Popup form functionality
+    const startProjectBtn = document.getElementById('start-project-btn');
+    const projectPopup = document.getElementById('project-popup');
+    const popupContent = document.getElementById('popup-content');
+    const closePopupBtn = document.getElementById('close-popup');
+    const cancelPopupBtn = document.getElementById('cancel-popup');
+    const submitPopupBtn = document.getElementById('submit-popup');
+    const projectForm = document.getElementById('project-form');
+
+    // Show popup
+    function showPopup() {
+        projectPopup.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        // Trigger animation
+        setTimeout(() => {
+            popupContent.classList.remove('scale-95', 'opacity-0');
+            popupContent.classList.add('scale-100', 'opacity-100');
+        }, 10);
+    }
+
+    // Hide popup
+    function hidePopup() {
+        popupContent.classList.remove('scale-100', 'opacity-100');
+        popupContent.classList.add('scale-95', 'opacity-0');
+        
+        setTimeout(() => {
+            projectPopup.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scrolling
+        }, 300);
+    }
+
+    // Event listeners for popup
+    if (startProjectBtn) {
+        startProjectBtn.addEventListener('click', showPopup);
+    }
+
+    if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', hidePopup);
+    }
+
+    if (cancelPopupBtn) {
+        cancelPopupBtn.addEventListener('click', hidePopup);
+    }
+
+    // Close popup when clicking outside
+    if (projectPopup) {
+        projectPopup.addEventListener('click', function(e) {
+            if (e.target === projectPopup) {
+                hidePopup();
+            }
+        });
+    }
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && projectPopup && !projectPopup.classList.contains('hidden')) {
+            hidePopup();
+        }
+    });
+
+    // Form submission handling
+    if (projectForm && submitPopupBtn) {
+        projectForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(projectForm);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const projectType = formData.get('project_type');
+            const location = formData.get('location');
+
+            // Validation
+            if (!name || !phone || !projectType || !location) {
+                showNotification('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            if (!isValidPhone(phone)) {
+                showNotification('Please enter a valid phone number.', 'error');
+                return;
+            }
+
+            // Show loading state
+            const originalText = submitPopupBtn.innerHTML;
+            submitPopupBtn.innerHTML = `
+                <svg class="w-4 h-4 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Sending...
+            `;
+            submitPopupBtn.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                showNotification(`Thank you, ${name}! Your project inquiry has been received. We'll contact you at ${phone} within 24 hours.`, 'success');
+                projectForm.reset();
+                hidePopup();
+                
+                // Reset button
+                submitPopupBtn.innerHTML = originalText;
+                submitPopupBtn.disabled = false;
+            }, 2000);
+        });
+    }
+
+    // Phone number validation
+    function isValidPhone(phone) {
+        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+        const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
+        return phoneRegex.test(cleanPhone) && cleanPhone.length >= 10;
+    }
 
     console.log('Power Design & Constructions website loaded successfully!');
 });
