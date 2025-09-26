@@ -117,46 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 16);
     }
 
-    // Hero form handling
-    const heroForm = document.getElementById('hero-form');
-    if (heroForm) {
-        heroForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(heroForm);
-            const name = formData.get('name') || heroForm.querySelector('input[type="text"]').value;
-            const email = formData.get('email') || heroForm.querySelector('input[type="email"]').value;
-            const phone = formData.get('phone') || heroForm.querySelector('input[type="tel"]').value;
-            const projectType = formData.get('project-type') || heroForm.querySelector('select').value;
-            const message = formData.get('message') || heroForm.querySelector('textarea').value;
-
-            // Simple form validation
-            if (!name || !email || !message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-
-            // Show loading state
-            const submitButton = heroForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.classList.add('loading');
-
-            // Simulate form submission
-            setTimeout(() => {
-                showNotification(`Thank you, ${name}! Your consultation request has been received. We'll contact you at ${email} within 24 hours.`, 'success');
-                heroForm.reset();
-                submitButton.textContent = originalText;
-                submitButton.classList.remove('loading');
-            }, 2000);
-        });
-    }
 
 
     // Smooth scrolling for internal links
@@ -387,51 +347,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form submission handling
-    if (projectForm && submitPopupBtn) {
-        projectForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(projectForm);
-            const name = formData.get('name');
-            const phone = formData.get('phone');
-            const projectType = formData.get('project_type');
-            const location = formData.get('location');
-
-            // Validation
-            if (!name || !phone || !projectType || !location) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-
-            if (!isValidPhone(phone)) {
-                showNotification('Please enter a valid phone number.', 'error');
-                return;
-            }
-
-            // Show loading state
-            const originalText = submitPopupBtn.innerHTML;
-            submitPopupBtn.innerHTML = `
-                <svg class="w-4 h-4 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                </svg>
-                Sending...
-            `;
-            submitPopupBtn.disabled = true;
-
-            // Simulate form submission
-            setTimeout(() => {
-                showNotification(`Thank you, ${name}! Your project inquiry has been received. We'll contact you at ${phone} within 24 hours.`, 'success');
-                projectForm.reset();
-                hidePopup();
-                
-                // Reset button
-                submitPopupBtn.innerHTML = originalText;
-                submitPopupBtn.disabled = false;
-            }, 2000);
-        });
-    }
 
     // Phone number validation
     function isValidPhone(phone) {
